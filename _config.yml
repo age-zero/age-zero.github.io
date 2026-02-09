@@ -1,0 +1,6 @@
+title: "Age-Zero – Analysis"
+description: "Politik · Gesellschaft · Analysen"
+url: "https://age-zero.github.io"
+
+markdown: kramdown
+permalink: /:title/
