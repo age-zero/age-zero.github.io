@@ -3,44 +3,71 @@ layout: default
 ---
 
 <article
+  lang="{% if page.lang %}{{ page.lang }}{% else %}de{% endif %}"
   {% if page.dir %}dir="{{ page.dir }}"{% endif %}
-  {% if page.lang %}lang="{{ page.lang }}"{% endif %}
 >
 
 {% if page.translations %}
+<link rel="alternate" hreflang="de" href="{{ page.translations.de | absolute_url }}">
+<link rel="alternate" hreflang="ku" href="{{ page.translations.ku | absolute_url }}">
+<link rel="alternate" hreflang="x-default" href="{{ page.url | absolute_url }}">
+{% endif %}
+
+{% if page.translations %}
 <nav class="lang-switch top-switch">
-  {% if page.translations.de %}
-    <a href="{{ page.translations.de }}">DEUTSCH</a>
+  {% if page.lang == "de" %}
+    <span class="lang active">DEUTSCH</span>
+  {% elsif page.translations.de %}
+    <a class="lang" href="{{ page.translations.de }}">DEUTSCH</a>
   {% endif %}
-  {% if page.translations.ku %}
-    <a href="{{ page.translations.ku }}">کوردی</a>
+
+  {% if page.lang == "ku-Arab" %}
+    <span class="lang active">کوردی</span>
+  {% elsif page.translations.ku %}
+    <a class="lang" href="{{ page.translations.ku }}">کوردی</a>
   {% endif %}
 </nav>
 {% endif %}
 
-  {% if page.lang == "ku-Arab" %}
-  <!-- RTL Title Block -->
+{% if page.lang == "ku-Arab" %}
+  <!-- RTL Essay Header (Sorani) -->
   <header class="post-header rtl-header">
     <h1>{{ page.title }}</h1>
 
     {% if page.subtitle %}
-      <h2>{{ page.subtitle }}</h2>
+      <h2 class="subtitle">{{ page.subtitle }}</h2>
+    {% endif %}
+
+    {% if page.subtitle2 %}
+      <h3 class="subtitle2">{{ page.subtitle2 }}</h3>
     {% endif %}
 
     <time>{{ page.date | date: "%d.%m.%Y" }}</time>
   </header>
 
   <hr class="post-divider">
-  {% else %}
-  <!-- Default LTR -->
-  <h1>{{ page.title }}</h1>
-  <p><small>{{ page.date | date: "%d.%m.%Y" }}</small></p>
-  <hr>
-  {% endif %}
 
-  <section class="post-content">
-    {{ content }}
-  </section>
+{% else %}
+  <!-- LTR Essay Header (Deutsch) -->
+  <header class="post-header ltr-header">
+    <h1>{{ page.title }}</h1>
+
+    {% if page.subtitle %}
+      <h2 class="subtitle">{{ page.subtitle }}</h2>
+    {% endif %}
+
+    {% if page.subtitle2 %}
+      <h3 class="subtitle2">{{ page.subtitle2 }}</h3>
+    {% endif %}
+
+    <time>{{ page.date | date: "%d.%m.%Y" }}</time>
+  </header>
+
+  <hr class="post-divider">
+{% endif %}
+
+<section class="post-content">
+  {{ content }}
+</section>
 
 </article>
-
