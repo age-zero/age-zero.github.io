@@ -376,8 +376,8 @@ article[dir="rtl"] .post-content h3 {
 }
 
 .index-post {
-  margin-bottom: 3rem;
-  text-align: justify;
+  text-align: center;
+  margin: 3.5rem 0;
 }
 
 .index-post h3 {
@@ -392,9 +392,10 @@ article[dir="rtl"] .post-content h3 {
 }
 
 .index-post p {
-  margin: 0 auto;
-  max-width: 720px;
+  max-width: 680px;
+  margin: 1.5rem auto 0;
   line-height: 1.8;
+  text-align: justify;
 }
 
 /* RTL Anpassung */
@@ -404,4 +405,24 @@ article[dir="rtl"] .post-content h3 {
 
 .index-section[dir="rtl"] .index-post p {
   text-align: justify;
+}
+
+.index-tagline {
+  opacity: 0.75;
+  margin-bottom: 2.5rem;
+}
+
+.index-langs {
+  margin: 0.8rem 0 0;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  letter-spacing: 0.05em;
+}
+
+.index-langs a {
+  text-decoration: none;
+}
+
+.index-langs a:hover {
+  opacity: 1;
 }

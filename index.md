@@ -6,37 +6,34 @@ lang: de
 
 <div class="index-page">
 
-  <div class="index-intro">
-    <h1>Age-Zero – Analysis</h1>
-    <p class="index-subtitle">Politik · Gesellschaft · Analysen</p>
+<h1>Age-Zero – Analysis</h1>
+<p class="index-tagline">Politik · Gesellschaft · Analysen</p>
+
+<hr class="post-divider">
+
+{% assign german_posts = site.posts | where: "lang", "de" %}
+
+{% for post in german_posts %}
+<div class="index-post">
+
+  <h2>{{ post.title }}</h2>
+  <time>{{ post.date | date: "%d.%m.%Y" }}</time>
+
+  <div class="index-langs">
+    <a href="{{ post.url }}">Deutsch</a>
+
+    {% if post.translations.ku %}
+      · <a href="{{ post.translations.ku }}">کوردی</a>
+    {% endif %}
   </div>
 
-  <hr class="index-divider">
+  <p>
+    {{ post.excerpt | strip_html | truncate: 240 }}
+  </p>
 
-  <section class="index-section">
-    <!-- <h2>Deutsch</h2> -->
-    {% for post in site.posts %}
-      {% if post.lang == "de" %}
-      <article class="index-post">
-        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-        <time>{{ post.date | date: "%d.%m.%Y" }}</time>
-        <p>{{ post.excerpt | strip_html | truncate: 220 }}</p>
-      </article>
-      {% endif %}
-    {% endfor %}
-  </section>
+</div>
 
-  <section class="index-section" dir="rtl">
-    <!--<h2>کوردی</h2>-->
-    {% for post in site.posts %}
-      {% if post.lang == "ku-Arab" %}
-      <article class="index-post">
-        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-        <time>{{ post.date | date: "%d.%m.%Y" }}</time>
-        <p>{{ post.excerpt | strip_html | truncate: 220 }}</p>
-      </article>
-      {% endif %}
-    {% endfor %}
-  </section>
+<hr class="post-divider">
+{% endfor %}
 
 </div>
