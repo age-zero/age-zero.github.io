@@ -428,3 +428,19 @@ article[dir="rtl"] .post-content h3 {
 .index-langs a:hover {
   opacity: 1;
 }
+
+.index-post p {
+  direction: rtl;
+  text-align: justify;
+  text-align-last: center;
+}
+
+.index-tagline {
+  opacity: 0.75;
+  margin-bottom: 2.5rem;
+}
+
+.index-tagline .sep {
+  margin: 0 0.5rem;
+  opacity: 0.5;
+}
